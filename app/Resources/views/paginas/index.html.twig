@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    	<!-- <div class="page-inner"> -->
+	 {{ render(controller(
+                'AppBundle\\Controller\\MenuController::indexAction',
+             { 'max': 3 }
+        )) }}
+        
+   <div class="container">
+       <div class="row">
+           <div class="col-md-16">
+                 {{ render(controller(
+                   'AppBundle\\Controller\\NodesController::indexAction',
+                { 'max': 3 }
+                )) }}    
+           </div>
+       </div>
+   </div>    
+    {% endblock %}

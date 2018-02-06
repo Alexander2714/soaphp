@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="col-md-4">
+               
+            <div class="row"> <h3>Nodos<span id="count" class="badge">counts here</span></h3>
+                <div class="dragImg"><img width="80" src="http://placehold.it/80x80"><span></span></div>
+                 <h3>Lienzo<span id="count"></span></h3>
+                <div id="dropHere"></div>
+            </div>
+        
+
+    </div>
+    <style>
+        #dropHere {
+            width: 1000px;
+            height: 400px;
+            border: 1px  dotted black;
+
+        }
+    </style>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        $(document).ready(function () {
+            $(function () {
+                //Make every clone image unique.
+                var counts = [0];
+                $(".dragImg").draggable({
+                    helper: "clone",
+                    //Create counter
+                    start: function () {
+                        counts[0]++;
+                    }
+                });
+                $("#dropHere").droppable({
+                    drop: function (e, ui) {
+                        $(this).append($(ui.helper).clone());
+                        //Pointing to the dragImg class in dropHere and add new class.
+                        $("#dropHere .dragImg").addClass("item-" + counts[0]).attr('id', "item-" + counts[0]).append("item-" + counts[0]);
+                        //  ui.helper.attr('id', "item-"+counts[0]);
+                        //  alert("count",counts[0]);
+                        document.getElementById('count').innerHTML = counts[0];
+                        //Remove the current class (ui-draggable and dragImg)
+                        $("#dropHere .item-" + counts[0]).removeClass("dragImg ui-draggable ui-draggable-dragging");
+                        $(".item-" + counts[0]).dblclick(function () {
+                            $(this).remove();
+                        });
+//make the div draggable --- Not working???
+                        make_draggable($(".item-1"));
+                    }
+
+
+                });
+                var zIndex = 0;
+                function make_draggable(elements)
+                {
+                    elements.draggable({
+                        containment: 'parent',
+                        start: function (e, ui) {
+                            ui.helper.css('z-index', ++zIndex);
+                        },
+                        stop: function (e, ui) {
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+   
+{% endblock %}
