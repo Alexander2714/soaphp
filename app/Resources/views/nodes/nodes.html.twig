@@ -3,13 +3,26 @@
 
 {% block body %}
     <div class="col-md-4">
-               
-            <div class="row"> <h3>Nodos<span id="count" class="badge">counts here</span></h3>
-                <div class="dragImg"><img width="80" src="http://placehold.it/80x80"><span></span></div>
-                 <h3>Lienzo<span id="count"></span></h3>
-                <div id="dropHere"></div>
-            </div>
-        
+
+        <div class="row"> <h3>Nodos<span id="count" class="badge">counts here</span></h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><div class="dragImg_if" ><img id="if" width="80" src="{{asset('images/if.png')}}"><span></span></div></th>
+                        <th><dv class="dragImg_error"><img width="80" src="{{asset('images/Error.png')}}"><span></span></div></th>
+                        <th><dv class="dragImg_mapper"><img width="80" src="{{asset('images/mapper.png')}}"><span></span></div></th>
+                        <th><dv class="dragImg_query"><img width="80" src="{{asset('images/query.png')}}"><span></span></div></th>
+                        <th><dv class="dragImg_writeFile"><img width="80" src="{{asset('images/WriteFile.png')}}"><span></span></div></th>
+                    </tr>
+                </thead>
+
+            </table>
+            
+            
+            <h3>Lienzo<span id="count"></span></h3>
+            <div id="dropHere"></div>
+        </div>
+
 
     </div>
     <style>
@@ -26,9 +39,11 @@
     <script>
         $(document).ready(function () {
             $(function () {
+                
                 //Make every clone image unique.
                 var counts = [0];
-                $(".dragImg").draggable({
+               
+                 $("[class^='dragImg']").draggable({
                     helper: "clone",
                     //Create counter
                     start: function () {
@@ -38,17 +53,28 @@
                 $("#dropHere").droppable({
                     drop: function (e, ui) {
                         $(this).append($(ui.helper).clone());
+                        
                         //Pointing to the dragImg class in dropHere and add new class.
                         $("#dropHere .dragImg").addClass("item-" + counts[0]).attr('id', "item-" + counts[0]).append("item-" + counts[0]);
-                        //  ui.helper.attr('id', "item-"+counts[0]);
-                        //  alert("count",counts[0]);
+                       var element = $(ui.helper).clone();
+                        element.attr("id",counts[0]);
+                        var id = element.attr("id");
+                        var clase = element.attr("class");
+                        var clase1 = clase.substring(0, clase.indexOf('ui'))
+                        var clase2 = clase1.substring(clase1.indexOf('_')+1)
+                        $("#dropHere [class^='dragImg']").attr("id","item_"+id)
+                        $("#dropHere [class^='dragImg']").attr("value",$.trim(clase2))
+                        
+                        
                         document.getElementById('count').innerHTML = counts[0];
                         //Remove the current class (ui-draggable and dragImg)
                         $("#dropHere .item-" + counts[0]).removeClass("dragImg ui-draggable ui-draggable-dragging");
                         $(".item-" + counts[0]).dblclick(function () {
                             $(this).remove();
                         });
+                        
 //make the div draggable --- Not working???
+                        
                         make_draggable($(".item-1"));
                     }
 
@@ -69,5 +95,5 @@
             });
         });
     </script>
-   
+
 {% endblock %}
