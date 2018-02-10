@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 class NodesController extends Controller
 {
     /**
-     * @Route("/", name="nodes")
+     * @Route("/nodes", name="nodes")
      */
     public function indexAction(Request $request)
     {
@@ -18,4 +18,8 @@ class NodesController extends Controller
             'base_dir' => realpath($this->container->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
         ));
     }   
+    
+    
+    
+  
 }

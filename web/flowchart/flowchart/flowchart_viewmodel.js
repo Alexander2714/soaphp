@@ -127,6 +127,11 @@ var flowchart = {
 		this.x = function () { 
 			return this.data.x;
 		};
+                
+                this.id = function () { 
+			return this.data.id;
+		};
+
 
 		//
 		// Y coordinate of the node.
@@ -563,6 +568,7 @@ var flowchart = {
 			// 
 			// Update the view model.
 			//
+                        
 			this.nodes.push(new flowchart.NodeViewModel(nodeDataModel));		
 		}
 

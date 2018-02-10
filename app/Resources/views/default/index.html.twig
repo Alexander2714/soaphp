@@ -1,4 +1,6 @@
+
 {% block body %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <body 
         ng-app="app" 
         ng-controller="AppCtrl"
@@ -17,14 +19,12 @@
                 </textarea>
             </div>
             <div style="margin-left: 600px;">
-                <button  id="newNode"                  
-                    title="Add a new node to the chart"
-                    >
-                    Add Node New
+                <button id="newNode" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
+                    Agregar Nodo
                 </button>
                 <button
                     ng-click="addNewNode()"
-                    title="Add a new node to the chart"
+                    title="Add a new node to the chart"                    
                     >
                     Add Node
                 </button>
@@ -65,17 +65,52 @@
 
         <!-- Library code. -->
 
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Agregar Nodo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <label>Agregar Nodo</label>
+                        <select>
+                            <option value="volvo">If</option>
+                            <option value="saab">Error</option>
+                            <option value="mercedes">Mapper</option>
+                            <option value="audi">Put</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button
+                            ng-click="addNewNode('alexande')"
+                            title="Add a new node to the chart" 
+                            class="btn btn-primary" data-dismiss="modal"
+                            >
+                            Add Node
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </body>
+
+
 
 {% endblock %}
 
 
 
 {% block stylesheets %}
-        <link rel="stylesheet" type="text/css" href="flowchart/app.css">
+    <link rel="stylesheet" type="text/css" href="flowchart/app.css">
 {% endblock %}
 
 {% block javascripts %}
+
     <script src = "{{asset('flowchart/lib/jquery-2.0.2.js')}}" type = "text/javascript" ></script>
     <script src="{{asset('flowchart/lib/angular.js')}}" type="text/javascript"></script>
 
@@ -90,4 +125,8 @@
     <!-- App code. -->
     <script src="{{asset("flowchart/app.js")}}" type="text/javascript"></script>
 </script> 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+   
 {% endblock %}
