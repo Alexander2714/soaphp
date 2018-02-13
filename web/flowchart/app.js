@@ -55,8 +55,11 @@ angular.module('app', ['flowChart', ])
                 var nextNodeID = 10;
 
                 //
-                // Setup the data-model for the chart.
+                // Setup the data-model for the chart. 
                 //
+
+                
+
                 var chartDataModel = {
                     nodes: [
                         {
@@ -195,9 +198,9 @@ angular.module('app', ['flowChart', ])
                     $("select option:selected").each(function () {
                         str = $(this).text() + " ";
                     });
-                    
+
                     var nodeName = str;
-                    
+
 
                     //
                     // Template for a new node.
@@ -231,7 +234,7 @@ angular.module('app', ['flowChart', ])
                         ],
                     };
                     $scope.chartViewModel.addNode(newNodeDataModel);
-                    
+
                 };
 
                 //

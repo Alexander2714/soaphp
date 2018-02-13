@@ -11,17 +11,18 @@
 
         <div style="width: 100%; overflow: hidden;">
             <div style="width: 600px; float: left;"> 
-                <textarea 
-                    style="width: 100%; height: 100%;"
-                    chart-json-edit
-                    view-model="chartViewModel"
-                    >
+                <textarea id="details" 
+                          style="width: 100%; height: 100%;"
+                          chart-json-edit
+                          view-model="chartViewModel"
+                          >
                 </textarea>
             </div>
             <div style="margin-left: 600px;">
                 <button id="newNode" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
                     Agregar Nodo
                 </button>
+                <button id="save"  type="button" class="btn btn-success">Guardar</button>
                 <button
                     ng-click="addNewNode()"
                     title="Add a new node to the chart"                    
@@ -128,5 +129,30 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-   
+
+
+<script>
+$("#save").click(function () {
+
+    var array_data_file = [];
+    array_data_file['locale'] = 'data';
+    array_data_file['domain'] = 'data';
+    array_data_file['bundle'] = 'data';
+    array_data_file['content'] = 'data';
+ 
+
+    var text = $('#details').val();
+    var array = JSON.parse("[" + text + "]");
+    $.ajax({
+        type: "POST",
+        url: "{{path('save_nodes')}}",
+        data: ({nombre: array}),
+        success: function (result) {
+            //do somthing here
+            alert("termino")
+        }
+    });
+});
+
+</script>                  
 {% endblock %}
