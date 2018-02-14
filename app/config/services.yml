@@ -7,3 +7,12 @@ services:
     #service_name:
     #    class: AppBundle\Directory\ClassName
     #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    
+    service_test:
+        class: AppBundle\Service\nodesInterpreter
+        arguments:
+            $service_node: '@service_nodes'
+            
+    service_nodes:
+        class: AppBundle\Service\Nodes\nodes
+        arguments: [@doctrine.orm.entity_manager]

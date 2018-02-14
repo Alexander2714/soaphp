@@ -25,7 +25,8 @@ class NodesController extends Controller {
 
         $em = $this->getDoctrine()->getManager();
         $array_file = $request->request->get('nombre');
-        var_dump($array_file[0]["nodes"][2]["name"]);
+        $prueba = $this->get('service_test')->parseNodes($array_file);
+        var_dump($prueba);
         die;
     }
 

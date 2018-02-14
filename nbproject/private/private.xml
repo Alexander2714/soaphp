@@ -4,14 +4,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/xampp/htdocs/soaphp/src/AppBundle/Controller/NodesController.php</file>
-            <file>file:/C:/xampp/htdocs/soaphp/src/AppBundle/Controller/LienzoController.php</file>
-            <file>file:/C:/xampp/htdocs/soaphp/app/Resources/views/default/menu.html.twig</file>
             <file>file:/C:/xampp/htdocs/soaphp/app/Resources/views/default/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/soaphp/app/Resources/views/paginas/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/soaphp/src/AppBundle/Controller/DefaultController.php</file>
-            <file>file:/C:/xampp/htdocs/soaphp/app/Resources/views/knp_menu.html.twig</file>
-            <file>file:/C:/xampp/htdocs/soaphp/src/AppBundle/Controller/MenuController.php</file>
-            <file>file:/C:/xampp/htdocs/soaphp/app/Resources/views/base.html.twig</file>
+            <file>file:/C:/xampp/htdocs/soaphp/web/flowchart/app.js</file>
         </group>
     </open-files>
 </project-private>
